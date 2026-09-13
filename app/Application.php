@@ -57,6 +57,7 @@ class Application
         $route = $this->slimApp;
         $route->addMiddleware(new MetricsMiddleware());
         $route->addMiddleware(new DebugMiddleware(Application::getRenderer()->getResponseFactory()));
+        $route->get('/externo[/]', [HomeController::class, 'externoGet']);
         $route->get('/login[/]', [HomeController::class, 'loginGet']);
         $route->post('/login[/]', [HomeController::class, 'loginPost']);
         $route->post('/logOut[/]', [HomeController::class, 'logOutGet']);

@@ -13,6 +13,10 @@ use function Francerz\Http\Utils\siteUrl;
 
 class HomeController extends AbstractController
 {
+    public function externoGet(IServerRequest $request, IResponse $response, array $params): IResponse
+    {
+        return Application::getRenderer()->renderView('/home/externoGet');
+    }
     public function indexGet(IServerRequest $request, IResponse $response, array $params): IResponse
     {
         return Application::getRenderer()->renderView('/home/indexGet');
