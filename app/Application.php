@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Controllers\HomeController;
+use App\Middlewares\LoginMiddleware;
 use App\Middlewares\MetricsMiddleware;
 use Francerz\Http\HttpFactory;
 use Francerz\Http\Utils\UriHelper;
@@ -11,6 +12,7 @@ use Francerz\WebappRenderUtils\Renderer;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Factory\AppFactory;
 use Slim\App as SlimApp;
+use Slim\Routing\RouteCollectorProxy;
 
 class Application
 {
@@ -55,7 +57,11 @@ class Application
         $route = $this->slimApp;
         $route->addMiddleware(new MetricsMiddleware());
         $route->addMiddleware(new DebugMiddleware(Application::getRenderer()->getResponseFactory()));
-        $route->get('[/]', [HomeController::class, 'indexGet']);
         $route->get('/login[/]', [HomeController::class, 'loginGet']);
+        $route->post('/login[/]', [HomeController::class, 'loginPost']);
+        $route->post('/logOut[/]', [HomeController::class, 'logOutGet']);
+        $route->group('', function (RouteCollectorProxy $route) {
+            $route->get('[/]', [HomeController::class, 'indexGet']);
+        })->addMiddleware(new LoginMiddleware());
     }
 }

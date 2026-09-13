@@ -1,113 +1,77 @@
 <?= $layout = $view->loadLayout('@layouts/default') ?>
 <?= $layout->startSection('content') ?>
 
-<!-- Card de Bienvenida -->
-<div class="card container-xl shadow-sm d-flex align-items-center justify-content-center" style="min-height: 80vh;">
-    <div class="border-0 rounded-3 overflow-hidden" style="width: 100%; max-width: 600px;">
-        <div class="card-body p-4 text-center">
-            <div class="bg-success bg-opacity-10 d-inline-flex align-items-center justify-content-center rounded-circle mb-4" style="width: 80px; height: 80px;">
-                <i class="fas fa-check-circle text-success" style="font-size: 2rem;"></i>
-            </div>
-
-            <h3 class="fw-semibold mb-2">¡Bienvenido!</h3>
-            <p class="text-muted mb-3">La prueba de carga se ha completado exitosamente</p>
-            <hr class="mx-auto my-3" style="width: 80px; opacity: 0.15;">
-
-            <!-- Badges de tecnologías -->
-            <div class="d-flex flex-wrap justify-content-center gap-2">
-                <span class="badge rounded-pill bg-light text-dark border border-1 border-light-subtle px-2 py-1">
-                    <i class="fab fa-bootstrap text-primary me-1"></i> Bootstrap
-                </span>
-                <span class="badge rounded-pill bg-light text-dark border border-1 border-light-subtle px-2 py-1">
-                    <i class="fab fa-font-awesome text-primary me-1"></i> Font Awesome
-                </span>
-                <span class="badge rounded-pill bg-light text-dark border border-1 border-light-subtle px-2 py-1">
-                    <i class="fas fa-chart-bar text-primary me-1"></i> Apexcharts
-                </span>
-                <span class="badge rounded-pill bg-light text-dark border border-1 border-light-subtle px-2 py-1">
-                    <i class="fab fa-js-square text-primary me-1"></i> jQuery
-                </span>
-                <span class="badge rounded-pill bg-light text-dark border border-1 border-light-subtle px-2 py-1">
-                    <i class="fas fa-table text-primary me-1"></i> DataTables
-                </span>
-                <span class="badge rounded-pill bg-light text-dark border border-1 border-light-subtle px-2 py-1">
-                    <i class="fab fa-php text-primary me-1"></i> PHP Dotenv
-                </span>
-                <span class="badge rounded-pill bg-light text-dark border border-1 border-light-subtle px-2 py-1">
-                    <i class="fas fa-server text-primary me-1"></i> Slim Framework
-                </span>
-            </div>
+<div class="container-xl">
+    <div class="card shadow-sm mb-3">
+        <div class="card-body p-4">
+            <h1 class="page-title mb-1">
+                <i class="fas fa-leaf text-success me-2"></i>
+                Economía Social y Sostenible
+            </h1>
+            <p class="text-muted mb-0">
+                Sistema de Economía social y sostenible del estado de Colima.
+            </p>
         </div>
     </div>
 </div>
 
-<!-- Tabla de Usuarios -->
-<div class="card container-xl shadow-sm">
-<table id="miTabla" class="table table-hover table-bordered align-middle mb-0">
-    <thead class="table-primary text-center">
-        <tr>
-            <th scope="col"></th>
-            <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col" class="d-none d-md-table-cell">Email</th>
-            <th scope="col" class="d-none d-md-table-cell">Teléfono</th>
-            <th scope="col" class="d-none d-md-table-cell">Acciones</th>
-        </tr>
-    </thead>
-    <tbody class="text-center">
-        <tr>
-            <td></td>
-            <td>1</td>
-            <td>Ana López</td>
-            <td class="d-none d-md-table-cell">ana@example.com</td>
-            <td class="d-none d-md-table-cell">555-1234</td>
-            <td class="d-none d-md-table-cell">
-                <div class="d-flex justify-content-center gap-2">
-                    <button class="btn btn-sm btn-outline-primary rounded-circle" title="Editar">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="btn btn-sm btn-outline-danger rounded-circle" title="Eliminar">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
+<!-- KPIs ESS -->
+<div class="container-xl">
+    <div class="row g-3 mb-3">
+        <div class="col-6 col-lg-3">
+            <div class="info-card">
+                <div class="info-icon" style="background:#eefaf8;border-color:#d4f1ed;color:#2c8a7f;">
+                    <i class="fas fa-seedling"></i>
                 </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
-</div>
-
-
-
-<!-- Gráficos con ApexCharts -->
-<div class="dashboard">
-    <div class="card">
-        <div id="barChart" class="chart-container"></div>
-    </div>
-
-    <div class="d-flex flex-wrap">
-        <div class="card col-12 col-lg-4">
-            <div id="donutChart" class="chart-container"></div>
+                <div class="info-title">Usuarios</div>
+                <div class="info-value" data-counter="47">0</div>
+                <span class="info-trend up"><i class="fas fa-arrow-up"></i> 15%</span>
+            </div>
         </div>
-        <div class="card col-12 col-lg-4">
-            <div id="radialBarChart" class="chart-container"></div>
+        <div class="col-6 col-lg-3">
+            <div class="info-card">
+                <div class="info-icon" style="background:#eefaf8;border-color:#d4f1ed;color:#2c8a7f;">
+                    <i class="fas fa-recycle"></i>
+                </div>
+                <div class="info-title">Productos</div>
+                <div class="info-value" data-counter="12840">0</div>
+                <span class="info-trend up"><i class="fas fa-arrow-up"></i> 22%</span>
+            </div>
         </div>
-        <div class="card col-12 col-lg-4">
-            <div class="sparkline-container">
-                <div id="sparklineChart" class="chart-container"></div>
+        <div class="col-6 col-lg-3">
+            <div class="info-card">
+                <div class="info-icon" style="background:#eefaf8;border-color:#d4f1ed;color:#2c8a7f;">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <div class="info-title">Pedidos</div>
+                <div class="info-value" data-counter="3200">0</div>
+                <span class="info-trend up"><i class="fas fa-arrow-up"></i> 8%</span>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="info-card">
+                <div class="info-icon" style="background:#eefaf8;border-color:#d4f1ed;color:#2c8a7f;">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <div class="info-title">Proveedores</div>
+                <div class="info-value" data-counter="9">0</div>
+                <span class="info-trend up"><i class="fas fa-arrow-up"></i> 3 nuevos</span>
             </div>
         </div>
     </div>
-
-    <div class="card">
-        <div id="areaChart" class="chart-container"></div>
-    </div>
 </div>
 
-<!-- Inicialización de DataTables -->
-<script>
-    $(function() {
-        initTable('#miTabla');
-    });
-</script>
+<!-- Gráfico de impacto -->
+<div class="container-xl">
+    <div class="card shadow-sm mb-3">
+        <div class="card-body p-4">
+            <h3 class="h5 mb-3">
+                <i class="fas fa-chart-line text-success me-2"></i>
+                Pedidos anuales
+            </h3>
+            <div id="areaChart"></div>
+        </div>
+    </div>
+</div>
 
 <?= $layout->endSection() ?>
