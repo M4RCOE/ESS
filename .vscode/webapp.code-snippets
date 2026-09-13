@@ -1,0 +1,294 @@
+{
+	"Model": {
+		"prefix": "model",
+		"description": "Creates a model compatible with francerz/sql-builder",
+		"body": [
+			"<?php",
+			"",
+			"namespace App\\Models;",
+			"",
+			"use Francerz\\SqlBuilder\\SelectQuery;",
+            "use Francerz\\WebappModelUtils\\ModelDescriptor;",
+            "use Francerz\\WebappModelUtils\\ModelParams;",
+			"",
+            "/**",
+            " * Class.........: $TM_FILENAME_BASE",
+            " * Database alias: $1",
+            " * Table.........: $2",
+            " * Table alias...: $3",
+            " * Primary key...: $4",
+            " */",
+			"class $TM_FILENAME_BASE extends AbstractModel",
+			"{",
+            "    public \\$$4;",
+            "",
+            "    public static function getModelDescriptor(): ModelDescriptor",
+            "    {",
+            "        \\$modelDescriptor = new ModelDescriptor('$1', '$2', '$3');",
+            "        \\$modelDescriptor = \\$modelDescriptor->withPrimaryKeyNames(['$4']);",
+            "        return \\$modelDescriptor;",
+            "    }",
+            "",
+			"    public static function buildSelectQuery(SelectQuery \\$query, ModelParams \\$params): SelectQuery",
+			"    {",
+            "        if (isset(\\$params['$4'])) {",
+            "            \\$query->where('$3.$4', \\$params['$4']);",
+            "        }",
+            "",
+			"        return \\$query;",
+			"    }",
+			"}",
+			"",
+			"?>"
+		]
+	},
+    "Model complete": {
+        "scope": "php",
+		"prefix": "model complete",
+		"description": "Creates a model compatible with francerz/sql-builder",
+		"body": [
+            "public static function getDatabase(): string",
+            "{",
+            "    return '$1';",
+            "}",
+            "",
+            "public static function getTableName(): string",
+            "{",
+            "    return '$2';",
+            "}",
+            "",
+            "public static function getTableAlias(): ?string",
+            "{",
+            "    return '$3';",
+            "}",
+            "",
+            "public static function getPrimaryKeyNames(): array",
+            "{",
+            "    return ['$4'];",
+            "}",
+            "",
+			"public static function buildSelectQuery(SelectQuery \\$query, ModelParams \\$params): SelectQuery",
+		]
+	},
+    "Model Filter": {
+        "scope": "php",
+        "prefix": "model param",
+        "body": [
+            "if (isset(\\$params['$1'])) {",
+            "    $2",
+            "}"
+        ]
+    },
+    "Model Nest": {
+        "scope": "php",
+        "prefix": "model nest many",
+        "body": [
+            "if (isset(\\$params[$1])) {",
+            "    \\$nestQuery = $2::getQuery(\\$params->getSubparams($1));",
+            "    \\$query",
+            "        ->nestMany('$3', \\$nestQuery, \\$row, $2::class)",
+            "        ->where('$4', \\$row->$5);",
+            "}"
+        ]
+    },
+    "Model Link First": {
+        "scope": "php",
+        "prefix": "model link first",
+        "body": [
+            "if (isset(\\$params[$1])) {",
+            "    \\$nestQuery = $2::getQuery(\\$params->getSubparams($1));",
+            "    \\$query",
+            "        ->linkFirst('$3', \\$nestQuery, \\$row, $2::class)",
+            "        ->where('$4', \\$row->$5);",
+            "}"
+        ]
+    },
+    "Controller": {
+        "scope": "php",
+        "prefix": "controller",
+        "isFileTemplate": true,
+        "body": [
+            "",
+            "namespace App\\Controllers;",
+            "",
+            "use App\\Application;",
+            "use Psr\\Http\\Message\\ResponseInterface as IResponse;",
+            "use Psr\\Http\\Message\\ServerRequestInterface as IServerRequest;",
+            "",
+            "class $TM_FILENAME_BASE extends AbstractController",
+            "{",
+            "    public function indexGet(IServerRequest \\$request, IResponse \\$response, array \\$params): IResponse",
+            "    {",
+            "        return \\$response;",
+            "    }",
+            "}",
+            ""
+        ]
+    },
+    "Controller Get":{
+        "scope": "php",
+        "prefix": "controller method get",
+        "body": [
+            "public function $1(IServerRequest \\$request, IResponse \\$response, array \\$params): IResponse",
+            "{",
+            "    return Application::getRenderer()->render$2($3);",
+            "}",
+        ]
+    },
+    "Controller Post":{
+        "scope": "php",
+        "prefix": "controller method post",
+        "body": [
+            "public function $1(IServerRequest \\$request, IResponse \\$response, array \\$params): IResponse",
+            "{",
+            "    return Application::getRenderer()->renderRedirect($2);",
+            "}",
+        ]
+    },
+    "Render View":{
+        "scope": "php",
+        "prefix": "render view",
+        "body": [
+            "return Application::getRenderer()->renderView('$1', [$2]);"
+        ]
+    },
+    "Render Redirect":{
+        "scope": "php",
+        "prefix": "render redirect",
+        "body": [
+            "return Application::getRenderer()->renderRedirect($1);"
+        ]
+    },
+    "Render File":{
+        "scope": "php",
+        "prefix": "render file",
+        "body": [
+            "return Application::getRenderer()->renderFile($1);"
+        ]
+    },
+    "Render Json":{
+        "scope": "php",
+        "prefix": "render json",
+        "body": [
+            "return Application::getRenderer()->renderJson($1);"
+        ]
+    },
+    "Middleware": {
+        "scope": "php",
+        "prefix": "middleware",
+        "isFileTemplate": true,
+        "body": [
+            "",
+            "namespace App\\Middlewares;",
+            "",
+            "use Psr\\Http\\Message\\ResponseInterface as IResponse;",
+            "use Psr\\Http\\Message\\ServerRequestInterface as IServerRequest;",
+            "use Psr\\Http\\Server\\RequestHandlerInterface as IRequestHandler;",
+            "",
+            "class $TM_FILENAME_BASE extends AbstractMiddleware",
+            "{",
+            "    public function process(IServerRequest \\$request, IRequestHandler \\$handler): IResponse",
+            "    {",
+            "        return \\$handler->handle(\\$request);",
+            "    }",
+            "}",
+            ""
+        ]
+    },
+    "Route Group": {
+        "scope": "php",
+        "prefix": "route group",
+        "body": [
+            "\\$route->group($1, function (RouteCollectorProxy \\$route) {",
+            "    $2",
+            "});"
+        ]
+    },
+    "Route Get": {
+        "scope": "php",
+        "prefix": "route get",
+        "body": [
+            "\\$route->get($1, [$2, $3]);"
+        ]
+    },
+    "Route Post": {
+        "scope": "php",
+        "prefix": "route post",
+        "body": [
+            "\\$route->post($1, [$2, $3]);"
+        ]
+    },
+    "Session var": {
+        "scope": "php",
+        "prefix": "session var",
+        "body": [
+            "/** @var $type */",
+            "private static \\$$varName;",
+            "public static function set$UpperVarName($type \\$value)",
+            "{",
+            "    static::set('$varName', \\$value);",
+            "    static::\\$$varName = \\$value;",
+            "}",
+            "public static function get$UpperVarName(): ?$type",
+            "{",
+            "    if (!isset(static::\\$$varName)) {",
+            "        static::\\$$varName = static::get('$varName');",
+            "    }",
+            "    return static::\\$$varName;",
+            "}",
+            "public static function unset$UpperVarName()",
+            "{",
+            "    return static::unset('$varName');",
+            "}"
+        ]
+    },
+    "View" : {
+        "prefix": "view",
+        "isFileTemplate": true,
+        "body": [
+            "<?php",
+            "",
+            "use function Francerz\\Http\\Utils\\siteUrl;",
+            "",
+            "\\$layout = \\$view->loadLayout('@layouts/default');",
+            "\\$layout->startSection('content');",
+            "?>",
+            "$1",
+            "<?php",
+            "\\$layout->endSection();",
+            ""
+        ]
+    },
+    "View layout": {
+        "prefix": "view layout",
+        "isFileTemplate": true,
+        "body": [
+            "<!DOCTYPE html>",
+            "<html lang=\"en\">",
+            "<head>",
+            "    <meta charset=\"UTF-8\">",
+            "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">",
+            "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+            "    <title>$1</title>",
+            "</head>",
+            "<body>",
+            "<?=\\$layout->section('content')?>",
+            "</body>",
+            "</html>"
+        ]
+    },
+    "get params": {
+        "prefix": "get params",
+        "isFileTemplate": true,
+        "body": [
+            "\\$get = \\$request->getQueryParams();",
+        ]
+    },
+    "post params": {
+        "prefix": "post params",
+        "isFileTemplate": true,
+        "body": [
+            "\\$post = \\$request->getParsedBody();",
+        ]
+    }
+}

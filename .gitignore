@@ -1,0 +1,28 @@
+# Ignorar configuración del IDE
+.vscode/launch.json
+
+# Ignorar archivo de entorno
+.env
+
+# Ignorar dependencias
+/node_modules/
+/vendor/
+
+# Ignorar todos los archivos en /public, excepto index.php y assets
+/public/*
+!/public/index.php
+!/public/assets/
+
+# Dentro de /public/assets ignorar vendor(pero mantener los demás)
+public/assets/vendor/
+
+# Ignorar secretos
+/.secrets/*
+!/.secrets/.gitkeep
+
+# Ignorar archivos de caché
+*.cache
+
+# Ignorar respaldos de base de datos
+/backups
+

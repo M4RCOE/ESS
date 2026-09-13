@@ -1,0 +1,30 @@
+{
+    "name": "proyecto-bootstrap",
+    "version": "1.0.0",
+    "description": "PHP Application Template with Bootstrap",
+    "main": "index.js",
+    "scripts": {
+        "postinstall": "powershell -Command \"New-Item -ItemType Directory -Force -Path public/assets/vendor/fontawesome/css; New-Item -ItemType Directory -Force -Path public/assets/vendor/fontawesome/webfonts; New-Item -ItemType Directory -Force -Path public/assets/vendor/datatables; New-Item -ItemType Directory -Force -Path public/assets/vendor/jquery; New-Item -ItemType Directory -Force -Path public/assets/vendor/apexcharts; New-Item -ItemType Directory -Force -Path public/assets/vendor/bootstrap; Copy-Item node_modules/@fortawesome/fontawesome-free/css/* -Destination public/assets/vendor/fontawesome/css -Recurse; Copy-Item node_modules/@fortawesome/fontawesome-free/webfonts/* -Destination public/assets/vendor/fontawesome/webfonts -Recurse; Copy-Item node_modules/datatables.net-dt/css/* -Destination public/assets/vendor/datatables -Recurse; Copy-Item node_modules/datatables.net/js/* -Destination public/assets/vendor/datatables -Recurse; Copy-Item node_modules/datatables.net-responsive/js/* -Destination public/assets/vendor/datatables -Recurse; Copy-Item node_modules/datatables.net-responsive-dt/css/* -Destination public/assets/vendor/datatables -Recurse; Copy-Item node_modules/datatables.net-buttons/js/* -Destination public/assets/vendor/datatables -Recurse; Copy-Item node_modules/datatables.net-buttons-dt/css/* -Destination public/assets/vendor/datatables -Recurse; Copy-Item node_modules/jszip/dist/* -Destination public/assets/vendor/datatables -Recurse; Copy-Item node_modules/pdfmake/build/* -Destination public/assets/vendor/datatables -Recurse; Copy-Item node_modules/jquery/dist/* -Destination public/assets/vendor/jquery -Recurse; Copy-Item node_modules/apexcharts/dist/* -Destination public/assets/vendor/apexcharts -Recurse; Copy-Item node_modules/bootstrap/dist/js/* -Destination public/assets/vendor/bootstrap -Recurse; Copy-Item node_modules/bootstrap/dist/css/* -Destination public/assets/vendor/bootstrap -Recurse\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "sass": "^1.69.5"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.7.2",
+        "apexcharts": "^3.49.0",
+        "bootstrap": "^5.3.2",
+        "datatables.net": "1.13.8",
+        "datatables.net-buttons": "2.4.2",
+        "datatables.net-buttons-dt": "2.4.2",
+        "datatables.net-dt": "1.13.8",
+        "datatables.net-responsive": "2.4.1",
+        "datatables.net-responsive-dt": "2.4.1",
+        "jquery": "^3.7.1",
+        "jszip": "^3.10.1",
+        "pdfmake": "^0.2.10",
+        "popper.js": "^1.16.1"
+    }
+}
